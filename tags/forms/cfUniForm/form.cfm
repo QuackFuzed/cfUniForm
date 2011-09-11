@@ -197,18 +197,8 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 																			Defaults to false.
 	@loadjQuery			Optional (boolean)	Indicates whether or not to load the jQuery core library.
 																			Defaults to false.
-	@loadTextareaResize		Optional (boolean)	Indicates whether or not to load the prerequisite files for the jQuery PrettyComments plugin.
+	@loadTextareaResize		Optional (boolean)	Indicates whether or not to load the prerequisite files for the jQuery Elastic plugin.
 																			Defaults to false.
-	@configTextareaResize	Optional (boolean)	Indicates whether or not to run configuration routines for the jQuery PrettyComments plugin.
-																			Defaults to false.
-	@textareaMaxHeight		Optional (numeric)	value to use for MaxHeight parameter of AutoResizable textarea
-																			Defaults to 500.
-	@textareaSetup		Optional (any)		Commands to load for the jQuery textareaResize (prettyComments) plugin. Can be provided as
-												a string OR a struct.  If it is a string, it will be loaded as-is.
-												If it is a struct, it will be looped over and a string of key-value
-												pairs will be created.
-
-												Defaults to an empty string.
 	@errors				Optional (struct|array)	A struct or an array of validation error messages to display.
 													If passing a struct, each key should match a field name
 													on the form, with its value being the error message.
@@ -363,6 +353,30 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 
  --->
 
+<!--- config settings --->
+<cfscript>
+	_config = structNew();
+	_config.jQuery = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js";
+	_config.jqui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js";
+	_config.jquiCSS = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/smoothness/jquery-ui.css";
+	_config.renderer = "../renderValidationErrors.cfm";
+	_config.uniformCSS = "/commonassets/css/uni-form.css";
+	_config.uniformCSSie = "/commonassets/css/uni-form-ie.css";
+	_config.uniformThemeCSS = "/commonassets/css/uni-form.default.css";
+	_config.uniformJS = "/commonassets/scripts/jQuery/forms/uni-form.jquery.js";
+	_config.validationJS = "http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js";
+	_config.inputJS = "/commonassets/scripts/jQuery/forms/jquery.field-0.9.3.min.js";
+	_config.dateCSS = "/commonassets/css/datepick/jquery.datepick.css";
+	_config.dateJS = "/commonassets/scripts/jQuery/forms/jquery.datepick-3.7.5.min.js";
+	_config.timeCSS = "/commonassets/css/jquery.timeentry.css";
+	_config.timeJS = "/commonassets/scripts/jQuery/forms/jquery.timeentry-1.4.6.min.js";
+	_config.jquiTimeJS = "/commonassets/scripts/jQuery/forms/jquery.timepicker.addon-0.9.1.min.js";
+	_config.maskJS = "/commonassets/scripts/jQuery/forms/jquery.maskedinput-1.2.2.min.js";
+	_config.textareaJS = "/commonassets/scripts/jQuery/forms/jquery.elastic-1.6.10.min.js";
+	_config.ratingCSS = "/commonassets/css/jquery.rating.css";
+	_config.ratingJS = "/commonassets/scripts/jQuery/forms/jquery.rating-3.12.min.js";
+</cfscript>
+
 <!--- SHOULD BE NO NEED TO EDIT BELOW THIS LINE --->
 <!--- define the tag attributes --->
 	<!--- required attributes --->
@@ -388,9 +402,6 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 	<cfparam name="attributes.loadjQueryUICSS" type="boolean" default="#attributes.loadjQueryUI#" />
 	<cfparam name="attributes.usejQueryUI" type="boolean" default="no" />
 	<cfparam name="attributes.loadTextareaResize" type="boolean" default="no" />
-	<cfparam name="attributes.configTextareaResize" type="boolean" default="#attributes.loadTextareaResize#" />
-	<cfparam name="attributes.textareaMaxHeight" type="numeric" default="500" />
-	<cfparam name="attributes.textareaSetup" type="any" default="" />
 	<cfparam name="attributes.dateSetup" type="any" default="" />
 	<cfparam name="attributes.timeSetup" type="any" default="" />
 	<cfparam name="attributes.validationSetup" type="any" default="" />
@@ -711,31 +722,6 @@ jQuery("button.submitButton").click(function() { jQuery(this).attr("disabled",tr
 				jsConfig = jsConfig & " jQuery('###attributes.id#').validate(" & _validationSetup & ");";
 			</cfscript>
 		</cfif>
-<!---
-		<cfif attributes.configValidation AND (NOT isObject(attributes.VT) OR NOT isObject(attributes.VTtarget))>
-			<cfscript>
-				_validationSetup = "";
-				if ( isSimpleValue(attributes.validationSetup) AND len(trim(attributes.validationSetup)) GT 0 )
-				{
-					_validationSetup = attributes.validationSetup;
-				}
-				else if ( isStruct(attributes.validationSetup)
-								AND
-									structCount(attributes.validationSetup) GT 0 )
-				{
-					_validationSetup = buildConfigString(attributes.validationSetup);
-				}
-				jsConfig = jsConfig & " jQuery('###attributes.id#').validate(" & _validationSetup & ");";
-			</cfscript>
-		<cfelseif isObject(attributes.VT) AND isObject(attributes.VTtarget)>
-			<cfscript>
-				_vtConfig = attributes.VT.getInitializationScript(JSincludes=false);
-				_vtScript = attributes.VT.getValidationScript(theObject=attributes.VTtarget,formName=attributes.id,context=attributes.VTcontext,locale=attributes.VTlocale);
-				_vtScript = reReplace(_vtScript,'(<script type="text/javascript">jQuery\(document\)\.ready\(function\((\jQuery)?\) \{|\}\);</script>)',"","all");
-				jsConfig = jsConfig & _vtScript;
-			</cfscript>
-		</cfif>
- --->
 		<!--- END: configValidation check --->
 
 		<!--- BEGIN: loadDateUI check --->
@@ -945,37 +931,10 @@ jQuery("button.submitButton").click(function() { jQuery(this).attr("disabled",tr
 			<cfsavecontent variable="_textareaJS">
 				<cfoutput><script src="#_config.textareaJS#" type="text/javascript"></script></cfoutput>
 			</cfsavecontent>
+			<cfset jsConfig = jsConfig & " jQuery('##" & attributes.id & " .resizableTextarea').elastic();" />
 		</cfif>
 		<!--- END: loadTextareaResize check --->
-		<!--- BEGIN: configTextareaResize check --->
-		<cfif attributes.configTextareaResize>
-			<cfscript>
-				_textareaSetup = "";
-				if ( isSimpleValue(attributes.textareaSetup) AND len(trim(attributes.textareaSetup)) GT 0 )
-				{
-					_textareaSetup = attributes.textareaSetup;
-				}
-				else if ( isStruct(attributes.textareaSetup)
-								AND
-									structCount(attributes.textareaSetup) GT 0 )
-				{
-					_textareaSetup = buildConfigString(attributes.textareaSetup);
-				}
-				if ( len(_textareaSetup) EQ 0 )
-				{
-					_textareaSetup = "{maxHeight:#attributes.textareaMaxHeight#}";
-				}
-				else if ( (find("maxHeight", _textareaSetup) EQ 0)
-								AND
-									(right(_textareaSetup, 1) IS "}") )
-				{
-					_textareaSetup = left(_textareaSetup, len(_textareaSetup)-1) & ",maxHeight:#attributes.textareaMaxHeight#";
-				}
-				jsConfig = jsConfig & " jQuery('##" & attributes.id & " .resizableTextarea').prettyComments(" & _textareaSetup & ");";
-			</cfscript>
-		</cfif>
-		<!--- END: configTextareaResize check --->
-
+		
 		<!--- BEGIN: loadRatingUI check --->
 		<cfif attributes.loadRatingUI>
 			<!--- ratingUI CSS requirements --->

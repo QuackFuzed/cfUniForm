@@ -176,3 +176,5 @@ div.cfu-fs-inner-wrap {border:0 !important;margin:0 !important;padding:0 !import
 /* default jQuery accordion rules */
 legend.ui-accordion-header {width:100%;background:#fff;padding:8px 2px !important;}
 legend.ui-accordion-header.ui-state-active {width:100%;background:#EFEFEF;padding:8px 2px !important;}
+/* set the default max-height for textareas */
+.resizableTextarea {max-height: 500px;}
