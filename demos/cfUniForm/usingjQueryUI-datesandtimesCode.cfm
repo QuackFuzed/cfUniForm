@@ -38,7 +38,7 @@ author:			Matt Quackenbush (http://www.quackfuzed.com)
 </p>
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
@@ -121,7 +121,7 @@ author:			Matt Quackenbush (http://www.quackfuzed.com)
 <ul>
 	<li><a href="usingjQueryUI-datesandtimes.cfm">View the "Using jQuery UI Dates &amp; Times" demo form</a></li>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 

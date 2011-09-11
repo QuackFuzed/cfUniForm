@@ -45,7 +45,7 @@ purpose:		I display the code for the 'Kitchen Sink Demo'
 </p>
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
@@ -411,7 +411,7 @@ purpose:		I display the code for the 'Kitchen Sink Demo'
 <ul>
 	<li><a href="kitchenSink.cfm">View the "Kitchen Sink" demo form</a></li>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 

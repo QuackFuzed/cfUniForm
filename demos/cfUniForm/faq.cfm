@@ -54,7 +54,7 @@ purpose:		I display frequently asked questions for cfUniForm
 </p>
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
@@ -227,7 +227,7 @@ purpose:		I display frequently asked questions for cfUniForm
 
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 

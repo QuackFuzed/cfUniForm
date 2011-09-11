@@ -29,7 +29,7 @@
 	<li><a href="multipleUploads.cfm">View the "Multiple Uploads" demo form</a></li>
 	<li><a href="preLoaded.cfm">View the "Pre-Loaded CSS/JS" demo form</a></li>
 	<li><a href="faq.cfm">cfUniForm FAQs</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 	<li><a href="http://experts.na3.acrobat.com/p32015566/">Dan Wilson's cfUniForm Preso</a></li>
 	<li><a href="http://www.amazon.com/gp/registry/wishlist/P1R2TKPZ3JX2/ref=wl_web" rel="nofollow">The obligatory Amazon Wish List link</a></li>
