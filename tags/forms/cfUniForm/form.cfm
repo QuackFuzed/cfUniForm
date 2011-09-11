@@ -464,7 +464,7 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 	_config.timeJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.timeentry-1.4.6.min.js";
 	_config.jquiTimeJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.timepicker.addon-0.9.1.min.js";
 	_config.maskJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.maskedinput-1.2.2.min.js";
-	_config.textareaJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.prettyComments-1.4.pack.js";
+	_config.textareaJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.elastic-1.6.10.min.js";
 	_config.ratingCSS = "#attributes.commonassetsPath#css/jquery.rating.css";
 	_config.ratingJS = "#attributes.commonassetsPath#scripts/jQuery/forms/jquery.rating-3.12.min.js";
 </cfscript>
