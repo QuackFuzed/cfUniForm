@@ -17,7 +17,7 @@
 	<a href="http://www.sprawsm.com/">Dragan Babic</a>.
 </p>
 
-<h4>Current Version: 4.5.0</h4>
+<h4>Current Version: 4.6.0</h4>
 
 <h4>Demos &amp; Info</h4>
 <ul>
@@ -80,7 +80,7 @@
 			<li><a href="http://keith-wood.name/datepick.html">Date Picker</a></li>
 			<li><a href="http://keith-wood.name/timeEntry.html">Time Entry</a></li>
 			<li><a href="http://digitalbush.com/projects/masked-input-plugin">Input Masking</a></li>
-			<li><a href="http://www.no-margin-for-errors.com/projects/prettyComments/">Pretty Comments</a></li>
+			<li><a href="http://www.unwrongest.com/projects/elastic/">Elastic</a></li>
 			<li><a href="http://www.fyneworks.com/jquery/star-rating/">Star Rating</a></li>
 		</ul>
 	</li>
