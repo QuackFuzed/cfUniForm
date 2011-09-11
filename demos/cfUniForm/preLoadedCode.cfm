@@ -45,7 +45,7 @@ purpose:		I display the code for the 'Pre-Loaded CSS/JS Demo'
 </p>
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
@@ -157,7 +157,7 @@ purpose:		I display the code for the 'Pre-Loaded CSS/JS Demo'
 <ul>
 	<li><a href="preLoaded.cfm">View the "Pre-Loaded CSS/JS" demo form</a></li>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
