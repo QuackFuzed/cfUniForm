@@ -609,7 +609,7 @@ jQuery("button.submitButton").click(function() { jQuery(this).attr("disabled",tr
 	</cfscript>
 
 	<!--- the tag execution is beginning, so open the form and display any validation error messages that exist --->
-	<cfoutput><!-- rendered by cfUniForm v4.5RC (http://www.quackfuzed.com/demos/cfUniForm/) --><form action="#attributes.action#" method="#attributes.method#" enctype="#_enctype#" id="#attributes.id#" class="uniForm #attributes.class#"></cfoutput>
+	<cfoutput><!-- rendered by cfUniForm v4.6.0 (http://www.quackfuzed.com/demos/cfUniForm/) --><form action="#attributes.action#" method="#attributes.method#" enctype="#_enctype#" id="#attributes.id#" class="uniForm #attributes.class#"></cfoutput>
 	<!--- BEGIN: validation error check --->
 	<cfif ((isStruct(err) AND structCount(err) GT 0) OR (isArray(err) AND arrayLen(err) GT 0))
 			AND
