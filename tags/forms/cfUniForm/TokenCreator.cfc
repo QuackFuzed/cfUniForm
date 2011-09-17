@@ -114,9 +114,6 @@ Otherwise, you'll need to create a new cfuniform.TokenCreator object in your for
 	<cfset tokenGenerationPolicy = TOKEN_PER_SESSION>
 	<cfset tokenExpirationPolicy = ON_SESSION_END> <!--- other possible values: onTokenCheck, onTokenTimeout, renewIfExisting --->
 	
-	<!--- NOTE: you'll see a lot of IF statements deciding which scope to use (cookie vs. session). In a future refactor, we should break this out into separate objects and delegate to them instead for token save and retrieval --->
-	<cfset tokenStoragePolicy = "session"><!--- other possible value: cookie --->
-	
 	<cfif sessionIsSupported()>
 		<cfset tokenStorageProvider = createObject( "component", "TokenSessionStorageProvider")>
 	<cfelse>
