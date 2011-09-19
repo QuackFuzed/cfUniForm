@@ -1,5 +1,7 @@
 <!--- 
 
+Special Thanks to Jason Dean (http://12robots.com/) and Pete Freitag (http://hackmycf.com/) for invaluable input.
+
 CFUniForm will add a token to each form to aide you in preventing CSRF/XSRF attacks. Several settings exist to control the behavior. As you ratchet up the security, you increase the potential for undesirable behavior for users.
 
 The Token Creator
