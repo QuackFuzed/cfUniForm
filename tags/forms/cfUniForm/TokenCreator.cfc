@@ -2,14 +2,7 @@
 
 CFUniForm will add a token to each form to aide you in preventing CSRF/XSRF attacks. Several settings exist to control the behavior. As you ratchet up the security, you increase the potential for undesirable behavior for users.
 
-This documentation is divided into three sections:
-
-1. TokenCreator behavior and configuration
-2. uform:form behavior and configuration
-3. Using the TokenCreator to compare a form's CSRF token with the saved token
-
-
-1. The Token Creator
+The Token Creator
 -----------------------
 
 -- DEFAULT BEHAVIOR --
@@ -18,7 +11,10 @@ This documentation is divided into three sections:
 
 - Token storage: The token will be stored in the session scope if it is available, or the cookie scope if it is not.
 
-- Token style: The token will be a UUID. 
+- Token style: The token will be a SecureRandom, which provides both uniqueness and randomness. 
+	By default, a new Java SecureRandom object will be created when the TokenCreator object is created, which is expensive (1-2 ms). 
+	Getting a random number from the SecureRandom object is extremely fast. 
+	Thus, again, it's best practice to create a single TokenCreator object in your application and pass that to CFUniForm. This approach will provide the best performance and security.
 
 -- CUSTOMIZATION --
 
@@ -40,17 +36,26 @@ This documentation is divided into three sections:
 
 - Token storage: You can change the token storage provider by calling tokenCreator.setTokenStorageProvider( storageProviderObject ). CFUniForm ships with a TokenSessionStorageProvider and a TokenCookieStorageProvider. You can create your own if necessary.
 
-- Token style: If you want an alternate token style, subclass TokenCreator, override the makeTokenString() function, and set your token creator into the CFUniForm config
+- Token style: You can call tokenCreator.setTokenType("UUID") to have the object use UUID instead of SecureRandom. 
+	
+	This method is technically less secure in that UUIDs are not random, so the object will supplement the UUID with some randomness.
+	
+	Long-term, this method is slightly less performant than using SecureRandom when using a single object in your application. When using a new object per form, this method is faster.
+	
+	If you're in an environment where creating java objects is disabled, you will need to use this option instead of SecureRandom
+ 
+
+	** If you want an alternate token style, subclass TokenCreator, override the makeTokenString() function, and set your token creator into the CFUniForm config
 
 
-2. Your <uform:form...> tag
+Your <uform:form...> tag
 ------------------------
 
 Three attributes: TokenTimeout (default: 30 minutes), TokenFieldName (default: __cfu_token), and TokenCreator (default: a new TokenCreator object)
 
 It is best practice to create a single TokenCreator object in your application (and the associated storage object) and set that into a config struct which you pass to CFUniForm.
 
-Here's how to do that with ColdSpring. Notice how this example overrides the default field name for the tokenFieldName attribute
+Here's how to do that with ColdSpring:
 
 <bean id="cfuniformTokenStorageProvider" class="cfuniform.TokenSessionStorageProvider"/>
 	<bean id="cfuniformTokenCreator" class="cfuniform.TokenCreator">
@@ -77,28 +82,7 @@ And then in your code:
 		....
 </uform:form>
 
-
-
-3. Using the TokenCreator to compare a form's CSRF token with the saved token
-
-In your code which handles a form submission, you can use the token creator object to compare:
-
-tokenValue = form["__cfu_token"];
-formID = form["formID"];
-tokenMatches = tokenCreator.tokenMatches( tokenValue, formID )
-if(NOT tokenMatches){
-	doWhatYouLike();
-}
-
-As discussed above, it's best practice to create a single TokenCreator object in your application and pass that into the CFUniForm Config. 
-
-Another reason to do this is that getting a hold of this tokenCreator object for performing the match then becomes simple, because you can simply fetch it from your application in whatever manner you typically use.
-
-Otherwise, you'll need to create a new cfuniform.TokenCreator object in your form handler and then perform  the match
-
  --->
-
-
 <cfcomponent>
 
 	<cfset ON_TOKEN_TIMEOUT = "onTokenTimeout">
@@ -109,10 +93,16 @@ Otherwise, you'll need to create a new cfuniform.TokenCreator object in your for
 	<cfset TOKEN_PER_FORM = "tokenPerForm">
 	<cfset TOKEN_PER_SESSION = "tokenPerSession">
 		
+	<cfset UUID_TYPE = "uuid">
+	<cfset SR_TYPE = "secureRandom">
+	<cfset TOKEN_TYPE = SR_TYPE>
+	<cfset secureRandom = "">
+		
 	<cfset TOKEN_PER_SESSION_KEY = "ALL">
 	
 	<cfset tokenGenerationPolicy = TOKEN_PER_SESSION>
 	<cfset tokenExpirationPolicy = ON_SESSION_END> <!--- other possible values: onTokenCheck, onTokenTimeout, renewIfExisting --->
+	
 	
 	<cfif sessionIsSupported()>
 		<cfset tokenStorageProvider = createObject( "component", "TokenSessionStorageProvider")>
@@ -133,6 +123,11 @@ Otherwise, you'll need to create a new cfuniform.TokenCreator object in your for
     <cffunction name="setTokenStorageProvider" output="false" access="public" returntype="void">
     	<cfargument name="tokenStorageProvider" type="any" required="true"/>
 		<cfset variables.tokenStorageProvider = arguments.tokenStorageProvider>
+    </cffunction>
+    
+    <cffunction name="setTokenType" access="public" output="false" returntype="void">    
+    	<cfargument name="tokenType" type="string" required="true"/>    
+    	<cfset variables.tokenType = arguments.tokenType />    
     </cffunction>
     
     <cffunction name="saveToken" output="false" access="public" returntype="any" hint="stores the token into the storage scope. returns the token string value">
@@ -211,7 +206,24 @@ Otherwise, you'll need to create a new cfuniform.TokenCreator object in your for
     </cffunction>
     
     <cffunction name="makeTokenString" output="false" access="private" hint="creates the actual token string">
-    	<cfreturn createUUID()>
+    	
+    	<cfif TOKEN_TYPE eq UUID_TYPE>
+    		<cfreturn makeUUIDTokenString()>
+    	<cfelse>
+    		<cfreturn makeSecureRandomTokenString()>
+    	</cfif>
+    	
+    </cffunction>
+	
+	<cffunction name="makeUUIDTokenString" output="false" access="private" returntype="string" hint="Creates a token string with UUID as its base">    
+    	<cfreturn hash( createUUID() & rand( "SHA1PRNG" ), "SHA-256" )>
+    </cffunction>
+
+	<cffunction name="makeSecureRandomTokenString" output="false" access="public" returntype="string" hint="Creates a token string with a java SecureRandom as its base">    
+    	<cfif isSimpleValue( variables.secureRandom )>
+    		<cfset variables.secureRandom = createObject( "java", "java.security.SecureRandom" )>
+    	</cfif>
+    	<cfreturn hash( variables.secureRandom.nextLong(), "SHA-256" )>
     </cffunction>
     
     <cffunction name="sessionIsSupported" output="false" access="public" returntype="boolean" hint="whether the session scope is enabled">    
