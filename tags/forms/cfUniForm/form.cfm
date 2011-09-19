@@ -313,6 +313,16 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
     												You can just specify the commonassetsPath instead. Defaults to /commonassets/
 
 	@config				DEPRECATED in v4.0			DEPRECATED.  Use 'pathConfig' instead.
+	
+	@tokenFieldName		Optional (string)			The field name for the csrf-prevention token
+													Defaults to __cfu_token
+	
+	@tokenExpiration	Optional (integer)			For per-form based token creation, the expiration in minutes for this form's token
+													Defaults to 30 minutes
+													
+	@tokenCreator		Optional (TokenCreator)		The object which creates tokens. 
+													Defaults to creating a new TokenCreator object for each form
+													See TokenCreator.cfc for documentation on usage and configuration
 
 	// STEPS TO USE THIS TAG
 
@@ -444,6 +454,9 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 	<cfparam name="attributes.config" type="struct" default="#structNew()#" /><!--- deprecated in v4.0 (2/23/10) - MQ --->
 
 	<cfparam name="attributes.isDisabled" type="boolean" default="false" />
+	<cfparam name="attributes.tokenFieldName" default="__cfu_token">
+	<cfparam name="attributes.tokenTimeout" default="30"> <!--- in minutes --->
+	<cfparam name="attributes.tokenCreator" default="#createObject('component', 'TokenCreator')#" />
 
 <!--- config settings --->
 <cfscript>
@@ -1035,6 +1048,11 @@ jQuery("button.submitButton").click(function() { jQuery(this).attr("disabled",tr
 	</cfif>
 	<!--- END: showSubmit check --->
 
+	<!--- csrf-prevention token --->
+	<cfoutput>
+		<input type="hidden" id="formID" name="formID" value="#attributes.id#">
+		<input type="hidden" id="#attributes.tokenFieldName#" name="#attributes.tokenFieldName#" value="#attributes.tokenCreator.generateToken(attributes.id, attributes.tokenTimeout)#">
+	</cfoutput>
 	<cfoutput></form></cfoutput>
 	<!--- if we are suppose to load the JS and did not load to the head, load now --->
 	<cfif (len(attributes.jsLoadVar) EQ 0) AND attributes.loadDefaultJS AND NOT attributes.addJStoHead>
