@@ -1050,8 +1050,8 @@ jQuery("button.submitButton").click(function() { jQuery(this).attr("disabled",tr
 
 	<!--- csrf-prevention token --->
 	<cfoutput>
-		<input type="hidden" id="formID" name="formID" value="#attributes.id#">
-		<input type="hidden" id="#attributes.tokenFieldName#" name="#attributes.tokenFieldName#" value="#attributes.tokenCreator.generateToken(attributes.id, attributes.tokenTimeout)#">
+		<input type="hidden" id="formID" name="formID" value="#attributes.id#" />
+		<input type="hidden" id="#attributes.tokenFieldName#" name="#attributes.tokenFieldName#" value="#attributes.tokenCreator.generateToken(attributes.id, attributes.tokenTimeout)#" />
 	</cfoutput>
 	<cfoutput></form></cfoutput>
 	<!--- if we are suppose to load the JS and did not load to the head, load now --->
