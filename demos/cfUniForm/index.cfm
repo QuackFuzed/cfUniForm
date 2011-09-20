@@ -25,7 +25,9 @@
 	<li><a href="globalConfig.cfm">View the "Global Config" demo form</a></li>
 	<li><a href="customValidation.cfm">View the "Custom Validation" demo form</a></li>
 	<li><a href="errorsArray.cfm">View the "Validation Errors Array" demo form</a></li>
-	<li><a href="usingjQueryUI.cfm">View the "Using jQuery UI" demo form</a></li>
+	<li><a href="usingjQueryUI-accordion.cfm">View the "Using jQuery UI Accordion" demo form</a></li>
+	<li><a href="usingjQueryUI-datesandtimes.cfm">View the "Using jQuery UI Dates and Times" demo form</a></li>
+	<li><a href="usingjQueryUI-tabs.cfm">View the "Using jQuery UI Tabs" demo form</a></li>
 	<li><a href="multipleUploads.cfm">View the "Multiple Uploads" demo form</a></li>
 	<li><a href="preLoaded.cfm">View the "Pre-Loaded CSS/JS" demo form</a></li>
 	<li><a href="faq.cfm">cfUniForm FAQs</a></li>
