@@ -77,6 +77,7 @@ purpose:			I insert an XHTML Strict 1.0 fieldset tag based upon the Uni-Form mar
 	7/13/10			Added support for native integration with ValidateThis framework.				MQ
 						(this change relates only to the server-side error message rendering)
 	
+	3/13/2012		Added support for placeholder 		 											JD
  --->
 
 <!--- // use example
@@ -207,7 +208,7 @@ purpose:			I insert an XHTML Strict 1.0 fieldset tag based upon the Uni-Form mar
 	</cfif>
 		<!--- BEGIN: fieldType check --->
 		<cfif listFindNoCase("text,password", thisField.type)>
-			<cfoutput><input name="#thisField.name#" id="#thisField.id#" value="#thisField.value#" size="#thisField.fieldSize#"<cfif thisField.maxFieldLength GT 0> maxlength="#thisField.maxFieldLength#"</cfif> type="#thisField.type#" class="textInput<cfif structKeyExists(thisField, 'inputClass') AND len(thisField.inputClass) GT 0> #thisField.inputClass#</cfif><cfif (structKeyExists(requiredFields, thisField.name)) OR (thisField.isRequired)> required</cfif><cfif fieldHasErrors(thisField.name, errors)> error</cfif>"<cfif thisField.isDisabled> disabled="disabled"</cfif> /></cfoutput>
+			<cfoutput><input name="#thisField.name#" id="#thisField.id#" value="#thisField.value#"<cfif len(thisField.placeholder) GT 0> placeholder="#thisField.placeholder#"</cfif> size="#thisField.fieldSize#"<cfif thisField.maxFieldLength GT 0> maxlength="#thisField.maxFieldLength#"</cfif> type="#thisField.type#" class="textInput<cfif structKeyExists(thisField, 'inputClass') AND len(thisField.inputClass) GT 0> #thisField.inputClass#</cfif><cfif (structKeyExists(requiredFields, thisField.name)) OR (thisField.isRequired)> required</cfif><cfif fieldHasErrors(thisField.name, errors)> error</cfif>"<cfif thisField.isDisabled> disabled="disabled"</cfif> /></cfoutput>
 		<cfelseif listFindNoCase("date,time,timestamp", thisField.type)>
 			<cfscript>
 				_pickerType = uCase(left(thisField.type, 1)) & lCase(right(thisField.type, len(thisField.type)-1));
