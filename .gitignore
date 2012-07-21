@@ -1,0 +1,7 @@
+#ignore these files
+.*
+!.gitignore
+settings.xml
+test.cfm
+/demos/WEB-INF
+*.iml

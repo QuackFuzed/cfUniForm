@@ -356,7 +356,7 @@ purpose:			I insert an XHTML Strict 1.0 fieldset tag based upon the Uni-Form mar
 					if ( listLen(thisField.starValues) EQ 0 ) {
 						s2 = 0;
 						starValues = "";
-						for ( s2=1; s2 <= thisField.starCount; s2=s2+1 ) {
+						for ( s2=1; s2 LTE thisField.starCount; s2=s2+1 ) {
 							starValues = listAppend(starValues,s2);
 						}
 					}

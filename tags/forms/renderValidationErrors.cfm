@@ -67,7 +67,6 @@ purpose:		I display an xhtml list of error messages
 	<cfparam name="attributes.errors" type="any" />
 	
 	<!--- optional attributes --->
-	<cfparam name="attributes.listType" type="string" default="ul" />
 	<cfparam name="attributes.listID" type="string" default="" />
 	<cfparam name="attributes.itemClass" type="string" default="" />
 	<cfparam name="attributes.firstItemClass" type="string" default="" />

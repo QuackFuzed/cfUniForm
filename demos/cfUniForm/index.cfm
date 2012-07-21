@@ -17,7 +17,7 @@
 	<a href="http://www.sprawsm.com/">Dragan Babic</a>.
 </p>
 
-<h4>Current Version: 4.5.0</h4>
+<h4>Current Version: 4.6.0</h4>
 
 <h4>Demos &amp; Info</h4>
 <ul>
@@ -25,11 +25,13 @@
 	<li><a href="globalConfig.cfm">View the "Global Config" demo form</a></li>
 	<li><a href="customValidation.cfm">View the "Custom Validation" demo form</a></li>
 	<li><a href="errorsArray.cfm">View the "Validation Errors Array" demo form</a></li>
-	<li><a href="usingjQueryUI.cfm">View the "Using jQuery UI" demo form</a></li>
+	<li><a href="usingjQueryUI-accordion.cfm">View the "Using jQuery UI Accordion" demo form</a></li>
+	<li><a href="usingjQueryUI-datesandtimes.cfm">View the "Using jQuery UI Dates and Times" demo form</a></li>
+	<li><a href="usingjQueryUI-tabs.cfm">View the "Using jQuery UI Tabs" demo form</a></li>
 	<li><a href="multipleUploads.cfm">View the "Multiple Uploads" demo form</a></li>
 	<li><a href="preLoaded.cfm">View the "Pre-Loaded CSS/JS" demo form</a></li>
 	<li><a href="faq.cfm">cfUniForm FAQs</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 	<li><a href="http://experts.na3.acrobat.com/p32015566/">Dan Wilson's cfUniForm Preso</a></li>
 	<li><a href="http://www.amazon.com/gp/registry/wishlist/P1R2TKPZ3JX2/ref=wl_web" rel="nofollow">The obligatory Amazon Wish List link</a></li>
@@ -80,7 +82,7 @@
 			<li><a href="http://keith-wood.name/datepick.html">Date Picker</a></li>
 			<li><a href="http://keith-wood.name/timeEntry.html">Time Entry</a></li>
 			<li><a href="http://digitalbush.com/projects/masked-input-plugin">Input Masking</a></li>
-			<li><a href="http://www.no-margin-for-errors.com/projects/prettyComments/">Pretty Comments</a></li>
+			<li><a href="http://www.unwrongest.com/projects/elastic/">Elastic</a></li>
 			<li><a href="http://www.fyneworks.com/jquery/star-rating/">Star Rating</a></li>
 		</ul>
 	</li>
@@ -94,6 +96,7 @@
 		Contributors: 
 		<ul>
 			<li><a href="http://www.nodans.com/">Dan Wilson</a></li>
+			<li><a href="http://blog.mxunit.org/">Marc Esher</a></li>
 			<li><a href="http://www.silverwareconsulting.com/">Bob Silverberg</a></li>
 			<li>Michael Sammut</li>
 			<li><a href="http://www.tacfug.org/">Byron Raines</a></li>

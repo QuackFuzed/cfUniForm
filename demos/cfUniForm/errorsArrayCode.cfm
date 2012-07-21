@@ -45,7 +45,7 @@ purpose:		I display the code for the 'Validation Errors Array Demo'
 </p>
 <ul>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
@@ -109,7 +109,7 @@ purpose:		I display the code for the 'Validation Errors Array Demo'
 <ul>
 	<li><a href="errorsArray.cfm">View the "Validation Errors Array" demo form</a></li>
 	<li><a href="index.cfm">Back to the cfUniForm demo home</a></li>
-	<li><a href="http://cfuniform.riaforge.org/">Download cfUniForm from RIAForge.org</a></li>
+	<li><a href="https://github.com/QuackFuzed/cfUniForm">Download cfUniForm from GitHub</a></li>
 	<li><a href="http://www.quackfuzed.com/index.cfm/UniForm-Tag-Library">View my blog</a></li>
 </ul>
 
