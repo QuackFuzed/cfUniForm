@@ -1,0 +1,16 @@
+cfUniForm is a library of custom tags and other related assets that is based upon the Uni-Form markup by Dragan Babic. 
+
+cfUniForm delivers the best of both worlds:
+
+1) Standards-compliant (XHTML Strict) form markup that is consistent across all common browsers.
+2) Build your forms by writing ColdFusion, and not (x)HTML/CSS.
+
+Project home: http://cfuniform.riaforge.org/
+
+Demos: http://www.quackfuzed.com/demos/cfUniForm/
+
+Documentation: https://github.com/QuackFuzed/cfUniForm/wiki
+
+Blog: http://www.quackfuzed.com/
+
+Support: http://groups.google.com/group/cfuniform-users/
