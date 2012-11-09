@@ -363,30 +363,6 @@ purpose:			I display an XHTML 1.0 Strict form based upon the Uni-Form markup
 
  --->
 
-<!--- config settings --->
-<cfscript>
-	_config = structNew();
-	_config.jQuery = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js";
-	_config.jqui = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js";
-	_config.jquiCSS = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/smoothness/jquery-ui.css";
-	_config.renderer = "../renderValidationErrors.cfm";
-	_config.uniformCSS = "/commonassets/css/uni-form.css";
-	_config.uniformCSSie = "/commonassets/css/uni-form-ie.css";
-	_config.uniformThemeCSS = "/commonassets/css/uni-form.default.css";
-	_config.uniformJS = "/commonassets/scripts/jQuery/forms/uni-form.jquery.js";
-	_config.validationJS = "https://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js";
-	_config.inputJS = "/commonassets/scripts/jQuery/forms/jquery.field-0.9.3.min.js";
-	_config.dateCSS = "/commonassets/css/datepick/jquery.datepick.css";
-	_config.dateJS = "/commonassets/scripts/jQuery/forms/jquery.datepick-3.7.5.min.js";
-	_config.timeCSS = "/commonassets/css/jquery.timeentry.css";
-	_config.timeJS = "/commonassets/scripts/jQuery/forms/jquery.timeentry-1.4.6.min.js";
-	_config.jquiTimeJS = "/commonassets/scripts/jQuery/forms/jquery.timepicker.addon-0.9.1.min.js";
-	_config.maskJS = "/commonassets/scripts/jQuery/forms/jquery.maskedinput-1.2.2.min.js";
-	_config.textareaJS = "/commonassets/scripts/jQuery/forms/jquery.elastic-1.6.10.min.js";
-	_config.ratingCSS = "/commonassets/css/jquery.rating.css";
-	_config.ratingJS = "/commonassets/scripts/jQuery/forms/jquery.rating-3.12.min.js";
-</cfscript>
-
 <!--- SHOULD BE NO NEED TO EDIT BELOW THIS LINE --->
 <!--- define the tag attributes --->
 	<!--- required attributes --->
