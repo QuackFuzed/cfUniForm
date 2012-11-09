@@ -83,6 +83,7 @@ purpose:		I display an XHTML 1.0 Strict form field (text, password, select, chec
 	2/23/10			Altered the data type and behavior of the 'pluginSetup' attribute.				MQ
 						For details, view the commments in the use example section.
 
+	3/13/2012		Added a placeholder optional attribute 											JD
  --->
 
 <!--- // use example
@@ -123,6 +124,10 @@ purpose:		I display an XHTML 1.0 Strict form field (text, password, select, chec
 																		defaults to 'true'
 													NOTE: This attribute is completely ignore unless type="textarea" AND
 															the 'loadTextareaResizable' attribute is provided to the form (and set to true).
+															
+	@placeholder			Optional (string)	- Text that will be displayed in the field prior to user data entry, creates placeholder="" attribute in input element 
+													NOTE: Only works with types Text and Password															
+															
 	@containerClass			Optional (string) 			- additional class attributes for the the holder div of the field.
 	@inputClass				Optional (string) 			- additional class attributes for the input tag of the field.
 	@mask					Optional (string)			- The mask to which the field must conform.  Used in conjunction with
@@ -307,6 +312,7 @@ purpose:		I display an XHTML 1.0 Strict form field (text, password, select, chec
 	<cfparam name="attributes.selectSize" type="numeric" default="0" />
 	<cfparam name="attributes.fieldSize" type="numeric" default="35" />
 	<cfparam name="attributes.maxFieldLength" type="numeric" default="0" />
+	<cfparam name="attributes.placeholder" type="string" default="" />
 	<cfparam name="attributes.textareaResizable" type="boolean" default="yes" />
 	<cfparam name="attributes.containerClass" type="string" default="" />
 	<cfparam name="attributes.inputClass" type="string" default="" />
